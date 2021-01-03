@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            <label class="col-sm-4 control-label" for="{{ field.name }}">{{ field.label }} : </label>
+
+            <div class="col-sm-8">
+                {{ field }}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Salveaza</button>
+    </form>
+{% endblock %}

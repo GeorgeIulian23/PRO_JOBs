@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+    <br>
+    <a href="{% url 'aplicatie2:adaugare' %}" class="header_style">Adaugare</a>
+    <table id="id_tabel">
+        <thead class="header_style">
+        <th>Counter</th>
+        <th>Name</th>
+        <th>Website</th>
+        <th>Type</th>
+        <th>Active</th>
+        <th>Location</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        {% for item in all_companies %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.website|upper }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.active }}</td>
+                <td>{{ item.location.city }} {{ item.location.country }}</td>
+                <td><a href="{% url 'aplicatie2:modificare' item.id %}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
